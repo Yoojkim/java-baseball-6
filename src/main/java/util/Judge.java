@@ -14,7 +14,7 @@ public class Judge {
     public static Score calculateScore(User user, Computer computer) {
         Score score = new Score();
 
-        for (int userNumber = 0; userNumber < Player.SIZE ; userNumber++) {
+        for (int userNumber = 0; userNumber < Player.SIZE; userNumber++) {
 
             Result compareResult = computer.compare(userNumber, user.getNumber(userNumber));
 

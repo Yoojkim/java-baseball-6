@@ -10,8 +10,8 @@ import view.UserView;
 
 public class Game {
     private static Game INSTANCE;
-    GameView gameView;
-    UserView userView;
+    private GameView gameView;
+    private UserView userView;
 
     private Game() {
         gameView = GameView.getInstance();

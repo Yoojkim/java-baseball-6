@@ -5,9 +5,9 @@ import player.Player;
 public class Score {
 
     private final String GAME_END = "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n";
-    private final String BALL="볼";
-    private final String STRIKE="스트라이크";
-    private final String NOTHING="낫싱";
+    private final String BALL = "볼";
+    private final String STRIKE = "스트라이크";
+    private final String NOTHING = "낫싱";
 
     private int ballCount = 0;
     private int strikeCount = 0;
