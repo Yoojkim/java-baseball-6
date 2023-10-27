@@ -1,9 +1,10 @@
 package player;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import judge.Result;
+import score.Result;
 
 public class Computer implements Player {
+
     private char[] number;
 
     public Computer() {
@@ -25,29 +26,28 @@ public class Computer implements Player {
 
             if (idx != comparedIdx) {
                 result = Result.BALL;
-            } else {
-                result = Result.STRIKE;
+                break;
             }
 
-            break;
+            result = Result.STRIKE;
         }
 
         return result;
     }
 
     private char[] pickNumbers() {
-        boolean[] alreadyExist = new boolean[10];
+        boolean[] alreadyExist = new boolean[EXIST_SIZE];
         char[] randomNumbers = new char[SIZE];
 
         int idx = 0;
         while (idx < SIZE) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            int randomNumber = Randoms.pickNumberInRange(MIN, MAX);
 
             if (alreadyExist[randomNumber]) {
                 continue;
             }
 
-            randomNumbers[idx++] = (char) ('0' + randomNumber);
+            randomNumbers[idx++] = (char) (START_NUMBER + randomNumber);
             alreadyExist[randomNumber] = true;
         }
 

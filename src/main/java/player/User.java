@@ -3,6 +3,9 @@ package player;
 import camp.nextstep.edu.missionutils.Console;
 
 public class User implements Player {
+    private final int RESTART = 1;
+    private final int END = 2;
+
     private char[] numbers;
 
     public User() {
@@ -19,15 +22,14 @@ public class User implements Player {
     }
 
     public boolean chooseGameEnd() {
-        System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
-
         String userChoiceInput = Console.readLine();
+
         endInputStringValidation(userChoiceInput);
 
         int choice = Integer.parseInt(userChoiceInput);
         endInputNumberValidation(choice);
 
-        if (choice == 1) {
+        if (choice == RESTART) {
             return false;
         }
 
@@ -47,7 +49,7 @@ public class User implements Player {
     }
 
     private void endInputNumberValidation(final int choice) {
-        if (choice < 1 || choice > 2) {
+        if (choice < RESTART || choice > END) {
             throw new IllegalArgumentException("user input is not appropriate");
         }
     }
@@ -62,17 +64,17 @@ public class User implements Player {
         }
 
         for (char number : numbersInput) {
-            if (number <= '0' || number > '9') {
+            if (number < MIN + START_NUMBER || number > MAX + START_NUMBER) {
                 throw new IllegalArgumentException("user input is not appropriate");
             }
         }
     }
 
     private void numbersUniqueValidation(char[] numbersInput) {
-        boolean[] alreadyExist = new boolean[10];
+        boolean[] alreadyExist = new boolean[EXIST_SIZE];
 
         for (char number : numbersInput) {
-            number -= '0';
+            number -= START_NUMBER;
 
             if (alreadyExist[number]) {
                 throw new IllegalArgumentException("input number is not unique");

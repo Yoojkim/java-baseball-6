@@ -1,6 +1,14 @@
-package judge;
+package score;
+
+import player.Player;
 
 public class Score {
+
+    private final String GAME_END = "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n";
+    private final String BALL="볼";
+    private final String STRIKE="스트라이크";
+    private final String NOTHING="낫싱";
+
     private int ballCount = 0;
     private int strikeCount = 0;
 
@@ -15,11 +23,11 @@ public class Score {
         strikeCount++;
     }
 
-    public void printScore() {
+    public String printScore() {
         StringBuilder sb = new StringBuilder();
 
         if (ballCount > 0) {
-            sb.append(ballCount).append("볼");
+            sb.append(ballCount).append(BALL);
         }
 
         if (ballCount > 0 && strikeCount > 0) {
@@ -27,24 +35,24 @@ public class Score {
         }
 
         if (strikeCount > 0) {
-            sb.append(strikeCount).append("스트라이크");
+            sb.append(strikeCount).append(STRIKE);
         }
 
         if (ballCount == 0 && strikeCount == 0) {
-            sb.append("낫싱");
+            sb.append(NOTHING);
         }
 
         sb.append("\n");
 
-        if (strikeCount == 3) {
-            sb.append("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
+        if (strikeCount == Player.SIZE) {
+            sb.append(GAME_END);
         }
 
-        System.out.print(sb);
+        return sb.toString();
     }
 
     public boolean isCorrect() {
-        if (ballCount == 0 && strikeCount == 3) {
+        if (strikeCount == Player.SIZE) {
             return true;
         }
 

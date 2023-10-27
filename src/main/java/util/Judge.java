@@ -1,5 +1,7 @@
-package judge;
+package util;
 
+import score.Result;
+import score.Score;
 import player.Player;
 import player.User;
 import player.Computer;
